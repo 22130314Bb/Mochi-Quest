@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cw5f2ys4dihkj"]
+
+[ext_resource type="FontFile" uid="uid://dxrb1ccg0irqd" path="res://assets/fonts/RevMiniPixel.ttf" id="1_85e16"]
+[ext_resource type="FontFile" uid="uid://dr33orrcldabl" path="res://assets/fonts/Minecraft.ttf" id="2_e4xv5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gl2ki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6ssp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oqwjq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_juijd"]
+
+[resource]
+default_font = ExtResource("2_e4xv5")
+Button/colors/font_focus_color = Color(0.9076155, 1, 0.7623919, 1)
+Button/colors/font_hover_color = Color(1, 1, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+Button/colors/font_pressed_color = Color(1, 0.541176, 0, 1)
+Button/fonts/font = ExtResource("1_85e16")
+Button/styles/focus = SubResource("StyleBoxEmpty_gl2ki")
+Button/styles/hover = SubResource("StyleBoxEmpty_r6ssp")
+Button/styles/normal = SubResource("StyleBoxEmpty_oqwjq")
+Button/styles/pressed = SubResource("StyleBoxEmpty_juijd")

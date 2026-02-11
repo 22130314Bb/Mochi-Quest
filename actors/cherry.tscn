@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://wthhf7ubvles"]
+
+[ext_resource type="Script" uid="uid://bftv7uum4tkgh" path="res://scripts/cherry.gd" id="1_84xtv"]
+[ext_resource type="Texture2D" uid="uid://3ywoa6b2365u" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hopping (16 x 32).png" id="1_jb6fo"]
+[ext_resource type="Texture2D" uid="uid://b8ofkylim3vo5" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hurt (16 x 32).png" id="2_4cmvl"]
+[ext_resource type="PackedScene" uid="uid://d0qrmnlhmxhtv" path="res://prefabs/hitbox.tscn" id="4_6tw6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_siiip"]
+size = Vector2(16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07ujw"]
+atlas = ExtResource("1_jb6fo")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82qdx"]
+atlas = ExtResource("1_jb6fo")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbb7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07ujw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82qdx")
+}],
+"loop": true,
+"name": &"hopping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4cmvl")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmjgo"]
+size = Vector2(14, 4)
+
+[node name="cherry" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_84xtv")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_siiip")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_qbb7r")
+animation = &"hurt"
+autoplay = "hopping"
+
+[node name="hitbox" parent="." instance=ExtResource("4_6tw6t")]
+
+[node name="collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_tmjgo")
+debug_color = Color(1, 0.00289285, 0.0726734, 0.42)

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc3l5rpoh8kyk"]
+
+[ext_resource type="Script" uid="uid://dfd8wonbpo61h" path="res://scripts/missile.gd" id="1_kd0w6"]
+[ext_resource type="Texture2D" uid="uid://blnf6clsdg717" path="res://assets/Sprite Pack 2/8 - Comrade Cheese Puff/Missile (16 x 8).png" id="1_nmkw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd0w6"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmkw6"]
+size = Vector2(12, 4)
+
+[node name="missile" type="AnimatableBody2D"]
+collision_layer = 8
+collision_mask = 3
+sync_to_physics = false
+script = ExtResource("1_kd0w6")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kd0w6")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_nmkw6")
+
+[node name="collision_detector" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="collision_detector"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_nmkw6")
+
+[connection signal="body_entered" from="collision_detector" to="." method="_on_collision_detection_body_entered"]
